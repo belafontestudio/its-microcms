@@ -255,3 +255,8 @@ _:-ms-input-placeholder, :root .demo-graph {
 #descrizione{
   top: 0;
 }
+
+.link_button_form{
+  position: relative;
+  top: -6px;
+}

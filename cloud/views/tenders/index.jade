@@ -6,11 +6,11 @@ block drawer
   include ../partials/_drawer
   
 block main
-  table.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+  table.mdl-cell.mdl-cell--8-col.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
      thead
       tr
-        th.mdl-data-table__cell--non-numeric Creato 
-        th.mdl-data-table__cell--non-numeric Attivo
+        th.mdl-data-table__cell--non-numeric Status
+        th.mdl-data-table__cell--non-numeric Data Creazione
         th.mdl-data-table__cell--non-numeric Titolo
      tbody
       - each tender in tenders
