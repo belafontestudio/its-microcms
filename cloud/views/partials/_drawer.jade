@@ -1,0 +1,26 @@
+block drawer
+  .demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
+    header
+      - var hash = hex_md5(user.getEmail())
+      img.avatar(src="https://secure.gravatar.com/avatar/" + hash + "?size=210&default=https%3A%2F%2Fwww.parse.com%2Fimages%2Faccounts%2Fno_avatar.png")
+      - var name = user.getUsername()
+      span.welcome 
+        | Buongiorno #{name}
+
+        
+        
+    nav.demo-navigation.mdl-navigation.mdl-color--blue-grey-800
+      a.mdl-navigation__link(href='/')
+        i.mdl-color-text--blue-grey-400.material-icons home
+        | Home
+      a.mdl-navigation__link(href='/announcements')
+        i.mdl-color-text--blue-grey-400.material-icons insert_invitation
+        | Annunci
+      a.mdl-navigation__link(href='/tenders')
+        i.mdl-color-text--blue-grey-400.material-icons description
+        | Bandi
+      
+      .mdl-layout-spacer
+      a.mdl-navigation__link(href='/logout') 
+        i.mdl-color-text--blue-grey-400.material-icons backspace
+        | Logout

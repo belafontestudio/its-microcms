@@ -1,0 +1,20 @@
+{
+  "name": "its",
+  "version": "0.0.1",
+  "authors": [
+    "Piermaria Cosina <piermaria@belafonte.co>"
+  ],
+  "description": "its - microcms",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "material-design-lite": "~1.0.0",
+    "trumbowyg": "~1.1.7"
+  }
+}

@@ -1,0 +1,13 @@
+include ../partials/_header
+
+
+.main_content
+  h1 modifica
+  - posts.forEach(function(post) {
+    .post_link
+      h1
+        a(href='/posts/' + post.id) #{post.get('title')}
+      h5 #{formatTime(post.createdAt)}
+      p !{post.get('body')}
+  - })
+  

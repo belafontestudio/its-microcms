@@ -1,0 +1,41 @@
+doctype html
+html.no-js
+  head
+    meta(charset="utf-8")
+    meta(content="IE=edge,chrome=1", http-equiv="X-UA-Compatible")
+    meta(content="", name="description")
+    meta(content="width=device-width, initial-scale=1, maximum-scale=1", name="viewport")
+    meta(name="apple-mobile-web-app-capable", content = "yes")
+    meta(name="apple-mobile-web-app-status-bar-style", content ="black")
+    meta(name="format-detection", content="telephone=no")
+    title= 'ITS Backoffice'
+    block fonts
+      link(href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en', rel='stylesheet')
+      link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    block css
+      link(rel='stylesheet', href='/components/material-design-lite/material.min.css')
+      link(rel='stylesheet', href='/css/styles.css')
+      link(rel='stylesheet', href='/components/trumbowyg/dist/ui/trumbowyg.min.css')
+    block head
+    block external-scripts
+  body
+    block layout
+      .demo-layout.mdl-layout.mdl-js-layout.mdl-layout--fixed-drawer.mdl-layout--fixed-header
+        block menu
+          | Menu
+        block drawer
+          | Drawer
+    
+        block grid
+          main.mdl-layout__content.mdl-color--grey-100
+            .mdl-grid.demo-content
+              block main
+
+    block scripts
+      script(src='/components/jquery/dist/jquery.min.js')
+      script(src='/components/material-design-lite/material.min.js')
+      script(src='/components/trumbowyg/dist/trumbowyg.min.js')
+      script(src='/js/main.js')
+        
+
+    

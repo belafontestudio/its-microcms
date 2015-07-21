@@ -1,0 +1,38 @@
+extends ../layouts/_html5bp
+
+block menu
+  include ../partials/_menu
+block drawer
+  include ../partials/_drawer
+  
+block main
+  table.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+     thead
+      tr
+        th.mdl-data-table__cell--non-numeric Creato 
+        th.mdl-data-table__cell--non-numeric Attivo
+        th.mdl-data-table__cell--non-numeric Titolo
+     tbody
+      - each tender in tenders
+        - var active = tender.get('active')
+        
+        tr
+          td.mdl-data-table__cell--non-numeric
+            if active
+              form(class='link_button_form', method='post', action='/tenders/#{tender.id}/deactivate')
+                input(type='hidden', name='_method', value='put')
+                input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Attivo')
+            else
+              form(class='link_button_form', method='post', action='/tenders/#{tender.id}/activate')
+                input(type='hidden', name='_method', value='put')
+                input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Disattivo')
+          td.mdl-data-table__cell--non-numeric #{formatTime(tender.createdAt)}
+          td.mdl-data-table__cell--non-numeric 
+            a(href="/tenders/#{tender.id}/edit") #{tender.get('title')}
+            
+
+  a#fab(href="/tenders/new")
+    button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+      i.material-icons add
+
+  
