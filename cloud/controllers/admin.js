@@ -4,6 +4,7 @@ var Comment = Parse.Object.extend('Comment');
 
 // Display all posts.
 exports.index = function(req, res) {
+  res.locals.path = req.path;
   var query = new Parse.Query(Post);
   query.descending('createdAt');
 

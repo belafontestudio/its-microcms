@@ -29,6 +29,10 @@ block main
           td.mdl-data-table__cell--non-numeric #{formatTime(tender.createdAt)}
           td.mdl-data-table__cell--non-numeric 
             a(href="/tenders/#{tender.id}/edit") #{tender.get('title')}
+          td.mdl-data-table__cell--non-numeric 
+            form(class='link_button_form', method='post', action='/tenders/#{tender.id}')
+              input(type='hidden', name='_method', value='DELETE')
+              input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Elimina')
             
 
   a#fab(href="/tenders/new")

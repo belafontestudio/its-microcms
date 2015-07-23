@@ -3,6 +3,7 @@ block menu
     .mdl-layout__header-row
       span.mdl-layout-title Home
       .mdl-layout-spacer
-      a.mdl-button.mdl-button--raised.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(href="/announcements/unpublishall")
-        | Nascondi tutti
+      if path == "/announcements"
+        a.mdl-button.mdl-button--raised.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(href="/announcements/unpublishall")
+          | Nascondi tutti
       

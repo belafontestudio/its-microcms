@@ -136,6 +136,8 @@ app.put('/announcements/:id', isAuthenticated, announcementsController.update);
 app.get('/tenders', isAuthenticated, tendersController.index);
 app.put('/tenders/:id/activate', isAuthenticated, tendersController.activate);
 app.put('/tenders/:id/deactivate', isAuthenticated, tendersController.deactivate);
+app.del('/tenders/:id', isAuthenticated, tendersController.delete);
+//app.get('/tenders/:id/edit', isAuthenticated, tendersController.edit);
 
 // RESTful routes for the blog comment object, which belongs to a post.
 app.post('/posts/:post_id/comments', commentsController.create);
