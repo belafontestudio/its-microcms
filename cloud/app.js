@@ -11,6 +11,7 @@ var adminController = require('cloud/controllers/admin.js');
 var dashboardController = require('cloud/controllers/dashboard.js');
 var announcementsController = require('cloud/controllers/announcements.js');
 var tendersController = require('cloud/controllers/tenders.js');
+var attachmentsController = require('cloud/controllers/attachments.js');
 
 
 var parseExpressHttpsRedirect = require('parse-express-https-redirect');
@@ -18,7 +19,6 @@ var parseExpressCookieSession = require('parse-express-cookie-session');
 // Required for initializing Express app in Cloud Code.
 var app = express();
 
-var user;
 
 function isAuthenticated(req, res, next) {
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
@@ -134,10 +134,18 @@ app.put('/announcements/:id', isAuthenticated, announcementsController.update);
 
 // Tenders
 app.get('/tenders', isAuthenticated, tendersController.index);
+app.get('/tenders/new', isAuthenticated, tendersController.new);
+app.post('/tenders', isAuthenticated, tendersController.create);
 app.put('/tenders/:id/activate', isAuthenticated, tendersController.activate);
 app.put('/tenders/:id/deactivate', isAuthenticated, tendersController.deactivate);
+app.get('/tenders/:id/edit', isAuthenticated, tendersController.edit);
+app.put('/tenders/:id', isAuthenticated, tendersController.update);
 app.del('/tenders/:id', isAuthenticated, tendersController.delete);
 //app.get('/tenders/:id/edit', isAuthenticated, tendersController.edit);
+
+app.get('/attachments/new', isAuthenticated, attachmentsController.new);
+
+app.del('/attachments/:id', isAuthenticated, attachmentsController.delete);
 
 // RESTful routes for the blog comment object, which belongs to a post.
 app.post('/posts/:post_id/comments', commentsController.create);

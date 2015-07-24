@@ -1,0 +1,18 @@
+extends ../layouts/_html5bp
+
+block menu
+	include ../partials/_menu
+block drawer
+	include ../partials/_drawer
+	
+block main
+	.mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col
+		.mdl-cell.mdl-cell--12-col
+			i.mdl-color-text--blue-grey-400.material-icons insert_invitation
+			form#fileupload(name='fileupload', enctype='multipart/form-data', method='post')
+				fieldset
+					input#fileselect.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='file', name='fileselect')
+					input#tenderid(type="hidden", value="#{tenderid}") 
+				.button-right	
+					button#uploadfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Carica PDF')
+						| Carica PDF

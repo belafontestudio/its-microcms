@@ -19,6 +19,7 @@ html, body {
   background-color: #F5F5F3;
 }
 
+
 .annuncio form {
   display: inline-block;
 }
@@ -250,6 +251,12 @@ _:-ms-input-placeholder, :root .demo-graph {
   position: fixed;
   right: 20px;
   bottom: 20px;
+}
+
+#FABcenter button{
+  margin: 20px auto;
+  display: block;
+  position: relative;
 }
 
 #descrizione{
