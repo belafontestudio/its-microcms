@@ -6,27 +6,30 @@ block drawer
   include ../partials/_drawer
   
 block main
+  p.tutorial
+    | Per creare un nuovo annuncio, utilizza il tasto in basso a destra.
   
   - announcements.forEach(function(announcement) {
     - var published = announcement.get('published')
     .annuncio.mdl-cell.mdl-shadow--2dp.mdl-cell--8-col.mdl-color--white(class = published ? 'published' : '')
       .mdl-cell.mdl-card--expand.mdl-cell--12-col
         span #{formatTime(announcement.createdAt)}
+        hr
         h1.mdl-typography--title #{announcement.get('title')}
       .mdl-card__supporting-text.mdl-card--expand
         p !{announcement.get('body')}
-      .mdl-card__actions.mdl-card--border
+      .mdl-card__actions.mdl-card--border.rightalign
         unless published
           form(class='link_button_form', method='post', action='/announcements/#{announcement.id}/publish')
             input(type='hidden', name='_method', value='put')
-            input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Pubblica')
+            input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect.pubblica(class='link_button', type='submit', value='Pubblica')
           
         form(class='link_button_form', method='get', action='/announcements/#{announcement.id}/edit')
           input(type='hidden', name='_method', value='put')
           input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Modifica')
         form(class='link_button_form', method='post', action='/announcements/#{announcement.id}')
           input(type='hidden', name='_method', value='DELETE')
-          input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Elimina')
+          input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect.elimina(class='link_button', type='submit', value='Elimina')
 
 
   - })

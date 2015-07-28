@@ -64,7 +64,7 @@ function fileUploader(){
     // Our file var now holds the selected file
     file = files[0];
 		if (uploadable && typeof file != 'undefined'){
-			uploadInput.addClass("mdl-button--colored");
+			uploadInput.removeAttr('disabled');
 		}
   });
 
@@ -87,7 +87,7 @@ function fileUploader(){
 
 			console.log("uploadfile");
 			loader.fadeIn();
-			uploadInput.fadeOut();
+			
 
 	    uploadFile();
 		}

@@ -6,7 +6,7 @@ block drawer
 	include ../partials/_drawer
 	
 block main
-	.mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col
+	.mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
 		.mdl-cell.mdl-cell--12-col
 			i.mdl-color-text--blue-grey-400.material-icons insert_invitation
 			form(method='post', action='/tenders/#{tender.id}')
@@ -17,13 +17,13 @@ block main
 					textarea#body(name='body', type='text')= tender.get('body')
 					label#descrizione.mdl-textfield__label(for="body") Descrizione
 				
-				.button-right	
+				.button-righest
 					input(type='hidden', name='_method', value='put')
 					input#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
 						
 						
 					
-		h2 PDF
+		h4 PDF
 		table.mdl-cell.mdl-cell--12-col.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
 			thead
 				tr
@@ -41,6 +41,7 @@ block main
 								input(type='hidden', name='_method', value='DELETE')
 								input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Elimina')
 
-		
-		a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(href="/attachments/new?t=#{tender.id}")
-			| Aggiungi PDF
+		.button-righest
+			a#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(href="/attachments/new?t=#{tender.id}")
+				| Aggiungi PDF						
+			

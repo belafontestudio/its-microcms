@@ -19,12 +19,77 @@ html, body {
   background-color: #F5F5F3;
 }
 
+.relative{
+  position:relative;
+  padding: 30px;
+}
+
+.button-right{
+  width: 300px;
+  text-align: right;
+}
+
+.button-righest {
+  width: 97%;
+  text-align: right;
+}
+
+.trumbowyg{
+  width:100% !important;
+}
+
+
+#itslogo{
+  width: 50px;
+  opacity: .7;
+  position: absolute;
+  right: 30px;
+  top: 40px;
+}
+
+.accedi{
+  font-size: 16px;
+  font-weight: 300;
+  color: grey;
+  padding-left: 64px;
+  padding-top: 50px;
+}
+
 #loader{
   display: none;
+  margin-top: 40px;
 }
+
+.float-l{
+  float: left;
+}
+
+.rightalign{
+  text-align: right;
+}
+
+.tutorial{
+  margin: 16px 8px 16px;
+}
+
+.annuncio{
+  padding: 15px 30px 0 30px;
+}
+
 .annuncio form {
   display: inline-block;
 }
+
+.pubblica{
+
+  color: #4CAF50 !important;
+}
+
+
+.elimina{
+  color: #D32F2F !important;
+}
+
 .avatar {
   width: 48px;
   height: 48px;
