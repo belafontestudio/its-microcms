@@ -10,15 +10,7 @@ exports.index = function(req, res) {
   query.descending('createdAt');
   query.find().then(function(tenders) {
 
-    _.each(tenders,function(tender){
-      var Attachment = Parse.Object.extend('Attachment');
-      var attachmentQuery = new Parse.Query(Attachment);
-      attachmentQuery.equalTo('related', tender);
-      attachmentQuery.descending('createdAt');
-      attachmentQuery.find().then(function(attachments) {
-        console.log(attachments);
-      });
-    });
+
 
     Parse.User.current().fetch().then(function(user){
 
