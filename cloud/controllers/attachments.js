@@ -1,3 +1,4 @@
+/*globals Parse*/
 var _ = require('underscore');
 var Attachment = Parse.Object.extend('Attachment');
 
@@ -7,6 +8,7 @@ var Attachment = Parse.Object.extend('Attachment');
 exports.new = function(req, res) {
   res.locals.path = req.path;
 	if(req.query.t){
+		console.log(req.query.t);
 		res.locals.tenderid = req.query.t;
 	}
 
