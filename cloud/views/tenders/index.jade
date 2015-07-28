@@ -26,13 +26,13 @@ block main
             if active
               form(class='link_button_form', method='post', action='/tenders/#{tender.id}/deactivate')
                 input(type='hidden', name='_method', value='put')
-                input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Attivo')
+                input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Aperto')
             else
               form(class='link_button_form', method='post', action='/tenders/#{tender.id}/activate')
                 input(type='hidden', name='_method', value='put')
-                input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Disattivo')
+                input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Chiuso')
           td.mdl-data-table__cell--non-numeric #{formatTime(tender.createdAt)}
-          td.mdl-data-table__cell--non-numeric 
+          td.mdl-data-table__cell--non-numeric.truncate 
             a(href="/tenders/#{tender.id}/edit") #{tender.get('title')}
           td.mdl-data-table__cell--non-numeric 
             form(class='link_button_form', method='post', action='/tenders/#{tender.id}')

@@ -38,6 +38,12 @@ html, body {
   width:100% !important;
 }
 
+.truncate {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 #itslogo{
   width: 50px;

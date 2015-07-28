@@ -34,7 +34,7 @@ block main
 				- each attachment in attachments
 					tr
 						td.mdl-data-table__cell--non-numeric #{formatTime(attachment.createdAt)}
-						td.mdl-data-table__cell--non-numeric 
+						td.mdl-data-table__cell--non-numeric.truncate
 							a(href="#{attachment.get('file').url()}", target="_blank") #{attachment.get('title')}
 						td.mdl-data-table__cell--non-numeric 
 							form(class='link_button_form', method='post', action='/attachments/#{attachment.id}')
