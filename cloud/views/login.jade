@@ -2,7 +2,8 @@ extends ./layouts/_html5bp
 block menu
 block drawer
 block main
-  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col
+  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
+    img#itslogo(src="images/itslogo.png", alt="")
     .mdl-cell
       i.mdl-color-text--blue-grey-400.material-icons person
       form(method='post', action='/login')

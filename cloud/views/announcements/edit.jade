@@ -6,7 +6,7 @@ block drawer
   include ../partials/_drawer
   
 block main
-  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col
+  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
     .mdl-cell.mdl-cell--12-col
       i.mdl-color-text--blue-grey-400.material-icons insert_invitation
       form(method='post', action='/announcements/#{announcement.id}')
@@ -16,6 +16,6 @@ block main
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           textarea#body(name='body', type='text')= announcement.get('body')
           label#descrizione.mdl-textfield__label(for="body") Descrizione
-        .button-right  
+        .button-righest
           input(type='hidden', name='_method', value='put')
           input#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
