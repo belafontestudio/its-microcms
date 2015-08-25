@@ -12,7 +12,7 @@ exports.index = function(req, res) {
     Parse.User.current().fetch().then(function(user){
       res.render('announcements/index', {
         announcements: results,
-        user: user
+        currentUser: user
       });
     });
   },
@@ -27,7 +27,7 @@ exports.new = function(req, res) {
   Parse.User.current().fetch().then(function(user){
 
     res.render('announcements/new', {
-      user: user
+      currentUser: user
     });
   });
 
@@ -123,7 +123,7 @@ exports.edit = function(req, res) {
 
         res.render('announcements/edit', {
           announcement: announcement,
-          user: user
+          currentUser: user
         });
       });
 

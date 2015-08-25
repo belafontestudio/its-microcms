@@ -5,13 +5,13 @@ var _ = require('underscore');
 var md5 = require('cloud/libs/md5.js');
 
 // Controller code in separate files.
-var postsController = require('cloud/controllers/posts.js');
-var commentsController = require('cloud/controllers/comments.js');
-var adminController = require('cloud/controllers/admin.js');
+
+
 var dashboardController = require('cloud/controllers/dashboard.js');
 var announcementsController = require('cloud/controllers/announcements.js');
 var tendersController = require('cloud/controllers/tenders.js');
 var attachmentsController = require('cloud/controllers/attachments.js');
+var usersController = require('cloud/controllers/users.js');
 
 
 var parseExpressHttpsRedirect = require('parse-express-https-redirect');
@@ -20,18 +20,36 @@ var parseExpressCookieSession = require('parse-express-cookie-session');
 var app = express();
 
 
+
+
 function isAuthenticated(req, res, next) {
     // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
     // you can do this however you want with whatever variables you set up
     console.log("check authentication");
-    if (Parse.User.current()){
-      console.log("is authenticated");
-        return next();
+    if(Parse.User.current()){
+      var query = (new Parse.Query(Parse.Role));
+      query.equalTo("name", "Administrator");
+      query.equalTo("users", Parse.User.current());
+      query.first().then(function(adminRole) {
+          if (adminRole) {
+              console.log("user is an admin");
+              return next();
+          } else {
+              console.log("user is not an admin");
+              res.redirect('/login');
+          }
+      });
+    }else{
+      console.log("user is not logged in");
+      res.redirect('/login');
     }
-    console.log("is not authenticated");
-    // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
-    res.redirect('/login');
+
 }
+
+
+
+
+
 
 
 
@@ -112,16 +130,12 @@ app.get('/logout', function(req, res) {
 // Show all posts on homepage
 app.get('/', isAuthenticated, dashboardController.index);
 
-// RESTful routes for the blog post object.
-app.get('/posts', isAuthenticated, postsController.index);
-app.get('/posts/new', isAuthenticated, postsController.new);
-app.post('/posts', isAuthenticated, postsController.create);
-app.get('/posts/:id', postsController.show);
-app.get('/posts/:id/edit', isAuthenticated, postsController.edit);
-app.put('/posts/:id', isAuthenticated, postsController.update);
-app.del('/posts/:id', isAuthenticated, postsController.delete);
 
 
+//users
+app.get('/users', isAuthenticated, usersController.index);
+app.put('/users/:id/addtoadmins', isAuthenticated, usersController.addToAdmins);
+app.put('/users/:id/removefromadmins', isAuthenticated, usersController.removeFromAdmins);
 // Announcements
 app.get('/announcements', isAuthenticated, announcementsController.index);
 app.get('/announcements/new', isAuthenticated, announcementsController.new);
@@ -144,17 +158,8 @@ app.del('/tenders/:id', isAuthenticated, tendersController.delete);
 //app.get('/tenders/:id/edit', isAuthenticated, tendersController.edit);
 
 app.get('/attachments/new', isAuthenticated, attachmentsController.new);
-
 app.del('/attachments/:id', isAuthenticated, attachmentsController.delete);
 
-// RESTful routes for the blog comment object, which belongs to a post.
-app.post('/posts/:post_id/comments', commentsController.create);
-app.del('/posts/:post_id/comments/:id', isAuthenticated, commentsController.delete);
-
-// Route for admin pages
-app.get('/admin', isAuthenticated, adminController.index);
-app.get('/admin/posts', isAuthenticated, adminController.index);
-app.get('/admin/comments', isAuthenticated, commentsController.index);
 
 // Required for initializing Express app in Cloud Code.
 app.listen();

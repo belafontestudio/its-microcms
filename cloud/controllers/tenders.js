@@ -16,7 +16,7 @@ exports.index = function(req, res) {
 
       res.render('tenders/index', {
         tenders: tenders,
-        user: user
+        currentUser: user
       });
     });
   },
@@ -33,7 +33,7 @@ exports.new = function(req, res) {
   Parse.User.current().fetch().then(function(user){
 
     res.render('tenders/new', {
-      user: user
+      currentUser: user
     });
   });
 
@@ -92,7 +92,7 @@ exports.edit = function(req, res) {
 	        res.render('tenders/edit', {
 	          tender: tender,
 						attachments: attachments,
-	          user: user
+	          currentUser: user
 	        });
 	      });
       });

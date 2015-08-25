@@ -1,9 +1,9 @@
 block drawer
   .demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
     header
-      - var hash = hex_md5(user.getEmail())
+      - var hash = hex_md5(currentUser.getEmail())
       img.avatar(src="https://secure.gravatar.com/avatar/" + hash + "?size=210&default=https%3A%2F%2Fwww.parse.com%2Fimages%2Faccounts%2Fno_avatar.png")
-      - var name = user.getUsername()
+      - var name = currentUser.getUsername()
       span.welcome 
         | Buongiorno #{name}
 
@@ -19,6 +19,9 @@ block drawer
       a.mdl-navigation__link(href='/tenders')
         i.mdl-color-text--blue-grey-400.material-icons description
         | Bandi
+      a.mdl-navigation__link(href='/users')
+        i.mdl-color-text--blue-grey-400.material-icons people
+        | Utenti
       
       .mdl-layout-spacer
       a.mdl-navigation__link(href='/logout') 

@@ -15,7 +15,7 @@ exports.new = function(req, res) {
   Parse.User.current().fetch().then(function(user){
 
     res.render('attachments/new', {
-      user: user
+      currentUser: user
     });
   });
 

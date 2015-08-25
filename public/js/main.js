@@ -87,14 +87,21 @@ function fileUploader(){
 
 			console.log("uploadfile");
 			loader.fadeIn();
-			
+
 
 	    uploadFile();
 		}
   });
 }
 
+function userButton(){
 
+	var adminButton = $('#adminButton');
+	adminButton.submit(function( event ) {
+  event.preventDefault();
+});
+
+}
 
 
 $(document).ready(function(){
@@ -106,7 +113,7 @@ $(document).ready(function(){
 		 resetCss: true
   });
 
-
+	//userButton();
   fileUploader();
 
 });
