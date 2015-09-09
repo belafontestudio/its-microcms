@@ -1,6 +1,51 @@
 require('cloud/app.js');
 
 
+var mailchimpApiKey = "81182ef8b0c2f8e2d142d9ffcc169750-us3";
+
+Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+		user = request.object.toJSON();
+		if (!user ||
+            !user.email){
+        response.error("Must supply email address, firstname and lastname to Mailchimp signup");
+        return;
+      }
+
+      var mailchimpData =
+			{
+		    "email_address": user.email,
+		    "status": "subscribed",
+		    "merge_fields": {
+		        "FNAME": user.name,
+		        "LNAME": user.surname,
+						"CONTACT": user.contact
+		    }
+			}
+
+
+      var url = "https://us3.api.mailchimp.com/3.0/lists/903f7dc4b0/members/";
+
+      Parse.Cloud.httpRequest({
+        method: 'POST',
+        url: url,
+				headers: {
+				 Authorization: "apikey " + mailchimpApiKey
+			 	},
+        body: JSON.stringify(mailchimpData),
+        success: function(httpResponse) {
+          response.success();
+        },
+        error: function(httpResponse) {
+          console.error('Request failed with response code ' + httpResponse.status);
+          console.error(httpResponse.text);
+
+          response.error('Mailchimp subscribe failed with response code ' + httpResponse.status);
+        }
+      });
+
+});
+
+
 Parse.Cloud.define("getRole", function(request, response) {
   var queryRole = new Parse.Query(Parse.Role);
   queryRole.equalTo('name', request.params.roleName);

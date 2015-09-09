@@ -6,8 +6,8 @@ block drawer
 	include ../partials/_drawer
 	
 block main
-	p.tutorial
-		| Per creare un nuovo utente, utilizza il tasto in basso a destra.
+	//- p.tutorial
+	//- 	| Per creare un nuovo utente, utilizza il tasto in basso a destra.
 
 	
 	table.mdl-cell.mdl-cell--8-col.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
@@ -15,7 +15,12 @@ block main
 			tr
 				th.mdl-data-table__cell--non-numeric Admin
 				th.mdl-data-table__cell--non-numeric Data Creazione
-				th.mdl-data-table__cell--non-numeric Titolo / Modifica
+				th.mdl-data-table__cell--non-numeric Email / Modifica
+				th.mdl-data-table__cell--non-numeric Nome
+				th.mdl-data-table__cell--non-numeric Cognome
+				th.mdl-data-table__cell--non-numeric Data di nascita
+				th.mdl-data-table__cell--non-numeric Corsi
+				th.mdl-data-table__cell--non-numeric Contatto
 		tbody
 			- each user in users
 				- var isAdmin = user.get('admin')
@@ -36,14 +41,19 @@ block main
 					td.mdl-data-table__cell--non-numeric #{formatTime(user.createdAt)}
 					td.mdl-data-table__cell--non-numeric.truncate 
 						a(href="/users/#{user.id}/edit") #{user.getUsername()}
+					td.mdl-data-table__cell--non-numeric.truncate= user.get("name")
+					td.mdl-data-table__cell--non-numeric.truncate= user.get("surname")
+					td.mdl-data-table__cell--non-numeric #{formatTime(user.get("birthday"))}
+					td.mdl-data-table__cell--non-numeric.truncate= user.get("courses")
+					td.mdl-data-table__cell--non-numeric.truncate= user.get("contact")
 					td.mdl-data-table__cell--non-numeric 
 						form(class='link_button_form', method='post', action='/users/#{user.id}')
 							input(type='hidden', name='_method', value='DELETE')
 							input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Elimina')
 						
 
-	a#fab(href="/users/new")
-		button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
-			i.material-icons add
+	//- a#fab(href="/users/new")
+	//- 	button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+	//- 		i.material-icons add
 
 	
