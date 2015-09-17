@@ -136,6 +136,7 @@ app.get('/', isAuthenticated, dashboardController.index);
 app.get('/users', isAuthenticated, usersController.index);
 app.put('/users/:id/addtoadmins', isAuthenticated, usersController.addToAdmins);
 app.put('/users/:id/removefromadmins', isAuthenticated, usersController.removeFromAdmins);
+app.del('/users/:id', isAuthenticated, usersController.delete);
 // Announcements
 app.get('/announcements', isAuthenticated, announcementsController.index);
 app.get('/announcements/new', isAuthenticated, announcementsController.new);

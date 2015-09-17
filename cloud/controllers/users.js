@@ -115,3 +115,17 @@ exports.removeFromAdmins = function(req, res) {
       }
   });
 };
+
+// Delete a post corresponding to the specified id.
+exports.delete = function(req, res) {
+  var user = new User();
+  Parse.Cloud.useMasterKey();
+  user.id = req.params.id;
+
+  user.destroy().then(function() {
+    res.redirect('/users');
+  },
+  function() {
+    res.send(500, 'Failed deleting user');
+  });
+};
