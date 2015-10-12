@@ -4,6 +4,7 @@ require('cloud/app.js');
 var mailchimpApiKey = "bc584ab440c9b997b779eac112b4d25c-us8";
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+
 		user = request.object.toJSON();
 		if (!user ||
             !user.email){
@@ -36,10 +37,13 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
           response.success();
         },
         error: function(httpResponse) {
-          console.error('Request failed with response code ' + httpResponse.status);
-          console.error(httpResponse.text);
-
-          response.error('Mailchimp subscribe failed with response code ' + httpResponse.status);
+					json_result = JSON.parse(httpResponse.text);
+					if(json_result.title == "Member Exists"){
+						response.success();
+					}else{
+						console.error('Request failed with response code ' + httpResponse.status);
+						response.error('Mailchimp subscribe failed with response code ' + httpResponse.status);
+					}
         }
       });
 

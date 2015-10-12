@@ -136,7 +136,12 @@ app.get('/', isAuthenticated, dashboardController.index);
 app.get('/users', isAuthenticated, usersController.index);
 app.put('/users/:id/addtoadmins', isAuthenticated, usersController.addToAdmins);
 app.put('/users/:id/removefromadmins', isAuthenticated, usersController.removeFromAdmins);
+app.get('/users/:id/edit', isAuthenticated, usersController.edit);
 app.del('/users/:id', isAuthenticated, usersController.delete);
+app.post('/users', isAuthenticated, usersController.create);
+app.put('/users/:id', isAuthenticated, usersController.update);
+app.get('/users/new', isAuthenticated, usersController.new);
+
 // Announcements
 app.get('/announcements', isAuthenticated, announcementsController.index);
 app.get('/announcements/new', isAuthenticated, announcementsController.new);
@@ -156,7 +161,6 @@ app.put('/tenders/:id/deactivate', isAuthenticated, tendersController.deactivate
 app.get('/tenders/:id/edit', isAuthenticated, tendersController.edit);
 app.put('/tenders/:id', isAuthenticated, tendersController.update);
 app.del('/tenders/:id', isAuthenticated, tendersController.delete);
-//app.get('/tenders/:id/edit', isAuthenticated, tendersController.edit);
 
 app.get('/attachments/new', isAuthenticated, attachmentsController.new);
 app.del('/attachments/:id', isAuthenticated, attachmentsController.delete);

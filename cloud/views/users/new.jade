@@ -1,0 +1,58 @@
+extends ../layouts/_html5bp
+
+block menu
+  include ../partials/_menu
+block drawer
+  include ../partials/_drawer
+  
+block main
+  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
+    .mdl-cell.mdl-cell--12-col
+      i.mdl-color-text--blue-grey-400.material-icons insert_invitation
+      form(method='post', action='/users')
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='name', type="text")
+          label.mdl-textfield__label(for="name") Nome
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='surname', type="text")
+          label.mdl-textfield__label(for="surname") Cognome
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='email', type="text")
+          label.mdl-textfield__label(for="email") Email
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name="password", type="text", value="1234567890")
+          label.mdl-textfield__label(for="password") Dafault Password
+
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='birthday', type="text")
+          label.mdl-textfield__label(for="birthday") Data di nascita
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          p Corsi
+          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-1")
+            input#checkbox-1.mdl-checkbox__input(type="checkbox", name="courses", value="Mobile App Design")/
+            span#checkbox-1-label.mdl-checkbox__label Mobile App Design
+        
+          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-2")
+            input#checkbox-2.mdl-checkbox__input(type="checkbox", name="courses", value="Videomaking")/
+            span#checkbox-2-label.mdl-checkbox__label Videomaking
+
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          p Contatto
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-1')
+            input#option-1.mdl-radio__button(type='radio', name='contact', value='website')
+            span.mdl-radio__label Sito
+          
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-2')
+            input#option-2.mdl-radio__button(type='radio', name='contact', value='email')
+            span.mdl-radio__label Email
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-3')
+            input#option-3.mdl-radio__button(type='radio', name='contact', value='person')
+            span.mdl-radio__label di Persona
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-4')
+            input#option-4.mdl-radio__button(type='radio', name='contact', value='presentation')
+            span.mdl-radio__label Presentazione
+
+
+        .button-righest 
+          button#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
+            | Salva

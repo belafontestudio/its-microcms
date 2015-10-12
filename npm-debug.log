@@ -1,0 +1,207 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'i',
+1 verbose cli   '--save-dev',
+1 verbose cli   'eslint',
+1 verbose cli   '[eslint-plugins]' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose config Skipping project config: /Users/piermaria-cosina/.npmrc. (matches userconfig)
+5 verbose cache add [ 'eslint', null ]
+6 verbose cache add name=undefined spec="eslint" args=["eslint",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'eslint',
+7 verbose parsed url   path: 'eslint',
+7 verbose parsed url   href: 'eslint' }
+8 verbose cache add [ '[eslint-plugins]', null ]
+9 verbose cache add name=undefined spec="[eslint-plugins]" args=["[eslint-plugins]",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: '[eslint-plugins]',
+10 verbose parsed url   path: '[eslint-plugins]',
+10 verbose parsed url   href: '[eslint-plugins]' }
+11 silly lockFile e0b0b266-eslint eslint
+12 verbose lock eslint /Users/piermaria-cosina/.npm/e0b0b266-eslint.lock
+13 silly lockFile 82f1007c-eslint-plugins [eslint-plugins]
+14 verbose lock [eslint-plugins] /Users/piermaria-cosina/.npm/82f1007c-eslint-plugins.lock
+15 silly lockFile e0b0b266-eslint eslint
+16 silly lockFile e0b0b266-eslint eslint
+17 silly lockFile 82f1007c-eslint-plugins [eslint-plugins]
+18 silly lockFile 82f1007c-eslint-plugins [eslint-plugins]
+19 verbose addNamed [ 'eslint', '' ]
+20 verbose addNamed [ null, '*' ]
+21 silly lockFile 62e46387-eslint eslint@
+22 verbose lock eslint@ /Users/piermaria-cosina/.npm/62e46387-eslint.lock
+23 verbose addNamed [ '[eslint-plugins]', '' ]
+24 verbose addNamed [ null, '*' ]
+25 silly lockFile 92932f2a-eslint-plugins [eslint-plugins]@
+26 verbose lock [eslint-plugins]@ /Users/piermaria-cosina/.npm/92932f2a-eslint-plugins.lock
+27 silly addNameRange { name: 'eslint', range: '*', hasData: false }
+28 silly addNameRange { name: '[eslint-plugins]', range: '*', hasData: false }
+29 verbose request where is /[eslint-plugins]
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id 5c964e973d7bf83b
+32 verbose url raw /[eslint-plugins]
+33 verbose url resolving [ 'https://registry.npmjs.org/', './%5Beslint-plugins%5D' ]
+34 verbose url resolved https://registry.npmjs.org/%5Beslint-plugins%5D
+35 verbose request where is https://registry.npmjs.org/%5Beslint-plugins%5D
+36 info trying registry request attempt 1 at 16:45:36
+37 http GET https://registry.npmjs.org/%5Beslint-plugins%5D
+38 verbose request where is /eslint
+39 verbose request registry https://registry.npmjs.org/
+40 verbose url raw /eslint
+41 verbose url resolving [ 'https://registry.npmjs.org/', './eslint' ]
+42 verbose url resolved https://registry.npmjs.org/eslint
+43 verbose request where is https://registry.npmjs.org/eslint
+44 info trying registry request attempt 1 at 16:45:36
+45 verbose etag "8S3IDVKO10U2GQV8POPT2ZYNC"
+46 http GET https://registry.npmjs.org/eslint
+47 http 304 https://registry.npmjs.org/eslint
+48 silly registry.get cb [ 304,
+48 silly registry.get   { date: 'Fri, 09 Oct 2015 14:45:36 GMT',
+48 silly registry.get     via: '1.1 varnish',
+48 silly registry.get     'cache-control': 'max-age=60',
+48 silly registry.get     etag: '"8S3IDVKO10U2GQV8POPT2ZYNC"',
+48 silly registry.get     age: '29',
+48 silly registry.get     connection: 'keep-alive',
+48 silly registry.get     'x-served-by': 'cache-ams4133-AMS',
+48 silly registry.get     'x-cache': 'HIT',
+48 silly registry.get     'x-cache-hits': '1',
+48 silly registry.get     'x-timer': 'S1444401936.500006,VS0,VE1',
+48 silly registry.get     vary: 'Accept' } ]
+49 verbose etag https://registry.npmjs.org/eslint from cache
+50 silly addNameRange number 2 { name: 'eslint', range: '*', hasData: true }
+51 silly addNameRange versions [ 'eslint',
+51 silly addNameRange   [ '0.0.4',
+51 silly addNameRange     '0.0.5',
+51 silly addNameRange     '0.0.6',
+51 silly addNameRange     '0.0.7',
+51 silly addNameRange     '0.1.0-dev',
+51 silly addNameRange     '0.1.0',
+51 silly addNameRange     '0.1.1',
+51 silly addNameRange     '0.1.2',
+51 silly addNameRange     '0.1.3',
+51 silly addNameRange     '0.1.4',
+51 silly addNameRange     '0.2.0',
+51 silly addNameRange     '0.3.0',
+51 silly addNameRange     '0.4.0',
+51 silly addNameRange     '0.4.1',
+51 silly addNameRange     '0.4.2',
+51 silly addNameRange     '0.4.3',
+51 silly addNameRange     '0.4.4',
+51 silly addNameRange     '0.4.5',
+51 silly addNameRange     '0.5.0',
+51 silly addNameRange     '0.5.1',
+51 silly addNameRange     '0.6.0',
+51 silly addNameRange     '0.6.1',
+51 silly addNameRange     '0.6.2',
+51 silly addNameRange     '0.7.1',
+51 silly addNameRange     '0.7.2',
+51 silly addNameRange     '0.7.3',
+51 silly addNameRange     '0.7.4',
+51 silly addNameRange     '0.8.0',
+51 silly addNameRange     '0.8.1',
+51 silly addNameRange     '0.8.2',
+51 silly addNameRange     '0.9.0',
+51 silly addNameRange     '0.9.1',
+51 silly addNameRange     '0.9.2',
+51 silly addNameRange     '0.10.0-alpha',
+51 silly addNameRange     '0.10.0-alpha.1',
+51 silly addNameRange     '0.10.0-alpha.2',
+51 silly addNameRange     '0.10.0',
+51 silly addNameRange     '0.11.0-alpha.0',
+51 silly addNameRange     '0.10.1',
+51 silly addNameRange     '0.10.2',
+51 silly addNameRange     '0.11.0',
+51 silly addNameRange     '0.12.0',
+51 silly addNameRange     '0.13.0',
+51 silly addNameRange     '0.14.0',
+51 silly addNameRange     '0.14.1',
+51 silly addNameRange     '0.15.0',
+51 silly addNameRange     '0.15.1',
+51 silly addNameRange     '0.16.0',
+51 silly addNameRange     '0.16.1',
+51 silly addNameRange     '0.16.2',
+51 silly addNameRange     '0.17.0',
+51 silly addNameRange     '0.17.1',
+51 silly addNameRange     '0.18.0',
+51 silly addNameRange     '0.19.0',
+51 silly addNameRange     '0.20.0',
+51 silly addNameRange     '0.21.0',
+51 silly addNameRange     '0.21.1',
+51 silly addNameRange     '0.21.2',
+51 silly addNameRange     '0.22.0',
+51 silly addNameRange     '0.22.1',
+51 silly addNameRange     '0.23.0',
+51 silly addNameRange     '0.24.0',
+51 silly addNameRange     '0.24.1',
+51 silly addNameRange     '1.0.0-rc-1',
+51 silly addNameRange     '1.0.0-rc-2',
+51 silly addNameRange     '1.0.0-rc-3',
+51 silly addNameRange     '1.0.0',
+51 silly addNameRange     '1.1.0',
+51 silly addNameRange     '1.2.0',
+51 silly addNameRange     '1.2.1',
+51 silly addNameRange     '1.3.0',
+51 silly addNameRange     '1.3.1',
+51 silly addNameRange     '1.4.0',
+51 silly addNameRange     '1.4.1',
+51 silly addNameRange     '1.4.2',
+51 silly addNameRange     '1.4.3',
+51 silly addNameRange     '1.5.0',
+51 silly addNameRange     '1.5.1',
+51 silly addNameRange     '1.6.0' ] ]
+52 verbose addNamed [ 'eslint', '1.6.0' ]
+53 verbose addNamed [ '1.6.0', '1.6.0' ]
+54 silly lockFile df0f51cf-eslint-1-6-0 eslint@1.6.0
+55 verbose lock eslint@1.6.0 /Users/piermaria-cosina/.npm/df0f51cf-eslint-1-6-0.lock
+56 silly lockFile df0f51cf-eslint-1-6-0 eslint@1.6.0
+57 silly lockFile df0f51cf-eslint-1-6-0 eslint@1.6.0
+58 silly lockFile 62e46387-eslint eslint@
+59 silly lockFile 62e46387-eslint eslint@
+60 http 404 https://registry.npmjs.org/%5Beslint-plugins%5D
+61 silly registry.get cb [ 404,
+61 silly registry.get   { 'content-type': 'application/json',
+61 silly registry.get     'cache-control': 'max-age=0',
+61 silly registry.get     'content-length': '76',
+61 silly registry.get     'accept-ranges': 'bytes',
+61 silly registry.get     date: 'Fri, 09 Oct 2015 14:45:36 GMT',
+61 silly registry.get     via: '1.1 varnish',
+61 silly registry.get     age: '0',
+61 silly registry.get     connection: 'keep-alive',
+61 silly registry.get     'x-served-by': 'cache-ams4120-AMS',
+61 silly registry.get     'x-cache': 'MISS',
+61 silly registry.get     'x-cache-hits': '0',
+61 silly registry.get     'x-timer': 'S1444401936.497251,VS0,VE84' } ]
+62 silly lockFile 92932f2a-eslint-plugins [eslint-plugins]@
+63 silly lockFile 92932f2a-eslint-plugins [eslint-plugins]@
+64 error 404 Not Found
+64 error 404
+64 error 404 '[eslint-plugins]' is not in the npm registry.
+64 error 404 You should bug the author to publish it
+64 error 404
+64 error 404 Note that you can also install from a
+64 error 404 tarball, folder, or http url, or git url.
+65 error System Darwin 15.0.0
+66 error command "node" "/usr/local/bin/npm" "i" "--save-dev" "eslint" "[eslint-plugins]"
+67 error cwd /Users/piermaria-cosina/Documents/parse/its-microcms
+68 error node -v v0.10.35
+69 error npm -v 1.4.28
+70 error code E404
+71 verbose exit [ 1, true ]
