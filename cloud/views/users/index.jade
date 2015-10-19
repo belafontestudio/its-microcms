@@ -6,10 +6,9 @@ block drawer
 	include ../partials/_drawer
 	
 block main
-	//- p.tutorial
-	//- 	| Per creare un nuovo utente, utilizza il tasto in basso a destra.
+	p.tutorial
+		| Per creare un nuovo utente, utilizza il tasto in basso a destra.
 
-	
 	table.mdl-cell.mdl-cell--8-col.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
 		thead
 			tr
@@ -20,6 +19,7 @@ block main
 				th.mdl-data-table__cell--non-numeric Cognome
 				th.mdl-data-table__cell--non-numeric Data di nascita
 				th.mdl-data-table__cell--non-numeric Corsi
+				th.mdl-data-table__cell--non-numeric Codice Fiscale
 				th.mdl-data-table__cell--non-numeric Contatto
 		tbody
 			- each user in users
@@ -45,6 +45,8 @@ block main
 					td.mdl-data-table__cell--non-numeric.truncate= user.get("surname")
 					td.mdl-data-table__cell--non-numeric #{formatTime(user.get("birthday"))}
 					td.mdl-data-table__cell--non-numeric.truncate= user.get("courses")
+					td.mdl-data-table__cell--non-numeric.truncate= user.get("fiscal")
+
 					td.mdl-data-table__cell--non-numeric.truncate= user.get("contact")
 					td.mdl-data-table__cell--non-numeric 
 						form(class='link_button_form', method='post', action='/users/#{user.id}')

@@ -11,12 +11,12 @@ block main
 			i.mdl-color-text--blue-grey-400.material-icons insert_invitation
 			form#fileupload(name='fileupload', enctype='multipart/form-data', method='post')
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-					input#title.mdl-textfield__input(name='title', type="text")
+					input#title.mdl-textfield__input(name='title', type="text").
 					label.mdl-textfield__label(for="title") Titolo
 				fieldset.float-l
-					input#fileselect.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='file', name='fileselect')
-					input#tenderid(type="hidden", value="#{tenderid}") 
-				.button-righest	
+					input#fileselect.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='file', name='fileselect').
+					input#tenderid(type="hidden", value="#{tenderid}").
+				.button-righest
 					button#uploadfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(disabled, type='submit', value='Carica PDF')
 						| Carica PDF
 				#loader.mdl-progress.mdl-js-progress.mdl-progress__indeterminate.mdl-cell--12-col

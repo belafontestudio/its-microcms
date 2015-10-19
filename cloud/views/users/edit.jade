@@ -26,12 +26,15 @@ block main
 						span.mdl-switch__label Email verificato
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
 					label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for='switch-1')
-						input#switch-1.mdl-switch__input(type='checkbox', name="admin",checked="#{user.get("admin")}")
+						input#switch-1.mdl-switch__input(type='checkbox', name="admin", checked="#{user.get("admin")}")
 						span.mdl-switch__label Admin
 
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
 					input#title.mdl-textfield__input(name='birthday', type="text", value="#{formatTime(user.get("birthday"))}")
 					label.mdl-textfield__label(for="birthday") Data di nascita
+				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+					input#title.mdl-textfield__input(name='fiscal', type="text", value="user.get("fiscal")")
+					label.mdl-textfield__label(for="fiscal") Codice Fiscale
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
 					p Corsi
 					label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-1")

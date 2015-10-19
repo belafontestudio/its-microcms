@@ -1,0 +1,26 @@
+extends ../layouts/_html5bp
+
+block menu
+  include ../partials/_menu
+block drawer
+  include ../partials/_drawer
+  
+block main
+  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
+    .mdl-cell
+      i.mdl-color-text--blue-grey-400.material-icons person
+      p.tutorial
+        | Gestione candidature.
+      - each candidate in candidates
+        - var active = candidate.get('active')
+        if active
+          form(class='link_button_form', method='post', action='/candidates/#{candidate.id}/deactivate')
+            input(type='hidden', name='_method', value='put')
+            input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Aperto')
+        else
+          form(class='link_button_form', method='post', action='/candidates/#{candidate.id}/activate')
+            input(type='hidden', name='_method', value='put')
+            input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Chiuso')
+  //- a#fab(href="/candidate/new")
+  //-   button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+  //-     i.material-icons add

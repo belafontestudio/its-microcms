@@ -5,13 +5,12 @@ var _ = require('underscore');
 var md5 = require('cloud/libs/md5.js');
 
 // Controller code in separate files.
-
-
 var dashboardController = require('cloud/controllers/dashboard.js');
 var announcementsController = require('cloud/controllers/announcements.js');
 var tendersController = require('cloud/controllers/tenders.js');
 var attachmentsController = require('cloud/controllers/attachments.js');
 var usersController = require('cloud/controllers/users.js');
+var candidatesController = require('cloud/controllers/candidates.js');
 
 
 var parseExpressHttpsRedirect = require('parse-express-https-redirect');
@@ -45,12 +44,6 @@ function isAuthenticated(req, res, next) {
     }
 
 }
-
-
-
-
-
-
 
 
 
@@ -141,6 +134,11 @@ app.del('/users/:id', isAuthenticated, usersController.delete);
 app.post('/users', isAuthenticated, usersController.create);
 app.put('/users/:id', isAuthenticated, usersController.update);
 app.get('/users/new', isAuthenticated, usersController.new);
+
+//candidates
+app.get('/candidates', isAuthenticated, candidatesController.index);
+app.put('/candidates/:id/activate', isAuthenticated, candidatesController.activate);
+app.put('/candidates/:id/deactivate', isAuthenticated, candidatesController.deactivate);
 
 // Announcements
 app.get('/announcements', isAuthenticated, announcementsController.index);
