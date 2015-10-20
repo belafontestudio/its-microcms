@@ -16,6 +16,8 @@ html.no-js
 			link(rel='stylesheet', href='/components/material-design-lite/material.min.css')
 			link(rel='stylesheet', href='/css/styles.css')
 			link(rel='stylesheet', href='/components/trumbowyg/dist/ui/trumbowyg.min.css')
+			link(rel='stylesheet', href='/components/pickadate/lib/compressed/themes/default.css')
+			link(rel='stylesheet', href='/components/pickadate/lib/compressed/themes/default.date.css')
 		block head
 		block external-scripts
 			script(src='//www.parsecdn.com/js/parse-1.5.0.min.js')
@@ -31,9 +33,12 @@ html.no-js
 					main.mdl-layout__content.mdl-color--grey-100
 						.mdl-grid.demo-content
 							block main
-
+		
 		block scripts
-			script(src='/components/jquery/dist/jquery.min.js')
-			script(src='/components/material-design-lite/material.min.js')
-			script(src='/components/trumbowyg/dist/trumbowyg.min.js')
-			script(src='/js/main.js')
+			script(src='/components/jquery/dist/jquery.min.js').
+			script(src='/components/material-design-lite/material.min.js').
+			script(src='/components/trumbowyg/dist/trumbowyg.min.js').
+			script(src='/components/pickadate/lib/compressed/picker.js').
+			script(src='/components/pickadate/lib/compressed/picker.date.js').
+			script(src='/js/main.js').
+		

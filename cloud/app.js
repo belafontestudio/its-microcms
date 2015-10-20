@@ -11,6 +11,7 @@ var tendersController = require('cloud/controllers/tenders.js');
 var attachmentsController = require('cloud/controllers/attachments.js');
 var usersController = require('cloud/controllers/users.js');
 var candidatesController = require('cloud/controllers/candidates.js');
+var userAttachmentsController = require('cloud/controllers/user_attachments.js');
 
 
 var parseExpressHttpsRedirect = require('parse-express-https-redirect');
@@ -74,7 +75,7 @@ app.locals.hex_md5 = md5.hex_md5;
 
 app.locals.formatTime = function(time) {
 
-  return moment(time).format('DD/MM/YY, h:mm a');
+  return moment(time).format('DD/MM/YY');
 };
 // Generate a snippet of the given text with the given length, rounded up to the
 // nearest word.
@@ -134,6 +135,9 @@ app.del('/users/:id', isAuthenticated, usersController.delete);
 app.post('/users', isAuthenticated, usersController.create);
 app.put('/users/:id', isAuthenticated, usersController.update);
 app.get('/users/new', isAuthenticated, usersController.new);
+
+app.get('/users/attachments/new', isAuthenticated, userAttachmentsController.new);
+app.del('/users/attachments/:id', isAuthenticated, userAttachmentsController.delete);
 
 //candidates
 app.get('/candidates', isAuthenticated, candidatesController.index);

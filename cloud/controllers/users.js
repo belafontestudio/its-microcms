@@ -106,6 +106,7 @@ exports.update = function(req, res) {
 
 
   userData = req.body;
+
   if(userData.name != "undefined"){
     user.set("name", userData.name);
   }
@@ -118,8 +119,12 @@ exports.update = function(req, res) {
   if(userData.courses != "undefined"){
     user.set("courses", userData.courses);
   }
-  if(userData.date != "undefined"){
-    user.set("birthday", userData.date);
+  if(userData.birthday != "undefined"){
+    var dt   = parseInt(userData.birthday.substring(0,2));
+    var mon  = parseInt(userData.birthday.substring(3,5));
+    var yr   = parseInt(userData.birthday.substring(6,10));
+    var date = new Date(yr, mon-1, dt);
+    user.set("birthday", date);
   }
   if(userData.email != "undefined"){
     user.set("email", userData.email);
@@ -146,6 +151,7 @@ exports.update = function(req, res) {
     res.redirect('/users');
   },
   function(err) {
+    console.log(err);
     res.send(500, 'Failed saving user');
   });
 };
@@ -234,18 +240,27 @@ exports.edit = function(req, res) {
         if(user.get("emailVerified") == "undefined"){
           emailVerified = false;
         }
+        var Attachment = Parse.Object.extend('UserAttachment');
+        var attachmentQuery = new Parse.Query(Attachment);
+        attachmentQuery.equalTo('related', user);
+        attachmentQuery.descending('createdAt');
+        attachmentQuery.find().then(function(attachments) {
+          console.log(attachments);
+          res.render('users/edit', {
+            user: user,
+            mobileapp: mobileapp,
+            website: website,
+            person: person,
+            email: email,
+            emailVerified: emailVerified,
+            presentation: presentation,
+            videomaking: videomaking,
+            currentUser: current,
+            attachments: attachments
+          });
 
-        res.render('users/edit', {
-          user: user,
-          mobileapp: mobileapp,
-          website: website,
-          person: person,
-          email: email,
-          emailVerified: emailVerified,
-          presentation: presentation,
-          videomaking: videomaking,
-          currentUser: current
         });
+
       });
 
     } else {

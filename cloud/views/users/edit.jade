@@ -4,6 +4,8 @@ block menu
 	include ../partials/_menu
 block drawer
 	include ../partials/_drawer
+
+
 	
 block main
 	.mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
@@ -12,56 +14,76 @@ block main
 			form(method='post', action='/users/#{user.id}')
 				p Creato il #{formatTime(user.createdAt)}
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-					input#title.mdl-textfield__input(name='name', type="text", value="#{user.get('name')}")
+					input#title.mdl-textfield__input(name='name', type="text", value="#{user.get('name')}").
 					label.mdl-textfield__label(for="name") Nome
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-					input#title.mdl-textfield__input(name='surname', type="text", value="#{user.get('surname')}")
+					input#title.mdl-textfield__input(name='surname', type="text", value="#{user.get('surname')}").
 					label.mdl-textfield__label(for="surname") Cognome
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-					input#title.mdl-textfield__input(name='email', type="text", value="#{user.get('username')}")
+					input#title.mdl-textfield__input(name='email', type="text", value="#{user.get('username')}").
 					label.mdl-textfield__label(for="email") Email
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
 					label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for='switch-2')
-						input#switch-2.mdl-switch__input(type='checkbox', name="emailverified",checked=emailVerified, disabled)
+						input#switch-2.mdl-switch__input(type='checkbox', name="emailverified",checked= emailVerified, disabled).
 						span.mdl-switch__label Email verificato
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
 					label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for='switch-1')
-						input#switch-1.mdl-switch__input(type='checkbox', name="admin", checked="#{user.get("admin")}")
+						input#switch-1.mdl-switch__input(type='checkbox', name="admin", checked="#{user.get('admin')}").
 						span.mdl-switch__label Admin
-
+				
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-					input#title.mdl-textfield__input(name='birthday', type="text", value="#{formatTime(user.get("birthday"))}")
+					input#title.mdl-textfield__input.datepicker(name='birthday', type="text", value="#{formatTime(user.get('birthday'))}").
 					label.mdl-textfield__label(for="birthday") Data di nascita
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-					input#title.mdl-textfield__input(name='fiscal', type="text", value="user.get("fiscal")")
+					input#title.mdl-textfield__input(name='fiscal', type="text", value="#{user.get('fiscal')}").
 					label.mdl-textfield__label(for="fiscal") Codice Fiscale
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
 					p Corsi
 					label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-1")
-						input#checkbox-1.mdl-checkbox__input(type="checkbox", name="courses", value="Mobile App Design", checked=mobileapp)/
+						input#checkbox-1.mdl-checkbox__input(type="checkbox", name="courses", value="Mobile App Design", checked=mobileapp).
 						span#checkbox-1-label.mdl-checkbox__label Mobile App Design
 				
 					label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-2")
-						input#checkbox-2.mdl-checkbox__input(type="checkbox", name="courses", value="Videomaking", checked=videomaking)/
+						input#checkbox-2.mdl-checkbox__input(type="checkbox", name="courses", value="Videomaking", checked=videomaking).
 						span#checkbox-2-label.mdl-checkbox__label Videomaking
-
+				
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
 					p Contatto
 					label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-1')
-						input#option-1.mdl-radio__button(type='radio', name='contact', value='website', checked=website)
+						input#option-1.mdl-radio__button(type='radio', name='contact', value='website', checked=website).
 						span.mdl-radio__label Sito
 					
 					label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-2')
-						input#option-2.mdl-radio__button(type='radio', name='contact', value='email', checked=email)
+						input#option-2.mdl-radio__button(type='radio', name='contact', value='email', checked=email).
 						span.mdl-radio__label Email
 					label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-3')
-						input#option-3.mdl-radio__button(type='radio', name='contact', value='person', checked=person)
+						input#option-3.mdl-radio__button(type='radio', name='contact', value='person', checked=person).
 						span.mdl-radio__label di Persona
 					label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='option-4')
-						input#option-4.mdl-radio__button(type='radio', name='contact', value='presentation', checked=presentation)
+						input#option-4.mdl-radio__button(type='radio', name='contact', value='presentation', checked=presentation).
 						span.mdl-radio__label Presentazione
-
-
+				
 				.button-righest
-					input(type='hidden', name='_method', value='put')
-					input#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
+					input(type='hidden', name='_method', value='put').
+					input#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva').
+
+		h4 PDF
+		table.mdl-cell.mdl-cell--12-col.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+			thead
+				tr
+					th.mdl-data-table__cell--non-numeric Data Creazione
+					th.mdl-data-table__cell--non-numeric Titolo
+					th.mdl-data-table__cell--non-numeric Azioni
+			tbody
+				- each attachment in attachments
+					tr
+						td.mdl-data-table__cell--non-numeric #{formatTime(attachment.createdAt)}
+						td.mdl-data-table__cell--non-numeric.truncate
+							a(href="#{attachment.get('userFile').url()}", target="_blank") #{attachment.get('title')}
+						td.mdl-data-table__cell--non-numeric
+							form(class='link_button_form', method='post', action='/users/attachments/#{attachment.id}')
+								input(type='hidden', name='_method', value='DELETE')
+								input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Elimina')
+		.button-righest
+			a#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(href="/users/attachments/new?u=#{user.id}")
+				| Aggiungi PDF	
