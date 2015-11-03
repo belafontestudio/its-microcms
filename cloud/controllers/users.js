@@ -79,6 +79,14 @@ exports.create = function(req, res) {
     }
 
   }
+  if(userData.candidate != "undefined"){
+    if(userData.candidate == "on"){
+      user.set("candidate", true);
+    }else{
+      user.set("candidate", false);
+    }
+
+  }
   if(userData.contact != "undefined"){
     user.set("contact", userData.contact);
   }
@@ -141,6 +149,14 @@ exports.update = function(req, res) {
     }
 
   }
+  if(userData.candidate != "undefined"){
+    if(userData.candidate == "on"){
+      user.set("candidate", true);
+    }else{
+      user.set("candidate", false);
+    }
+
+  }
   if(userData.contact != "undefined"){
     user.set("contact", userData.contact);
   }
@@ -198,6 +214,56 @@ exports.addToAdmins = function(req, res) {
               }
           });
 
+      },
+      error: function(error) {
+        res.send(500, 'Failed saving user');
+      }
+  });
+};
+
+exports.addToCandidates = function(req, res) {
+
+  userId = req.params.id;
+  var queryUser = new Parse.Query(Parse.User);
+  queryUser.equalTo('objectId',userId);
+  queryUser.first({
+      success: function(result) { // Role Object
+          var user = result;
+
+          Parse.Cloud.useMasterKey();
+          user.save({"candidate":true}, {
+            success: function(object) {
+              res.redirect('/users');
+            },
+            error: function(object, error) {
+              console.log(error);
+              res.redirect('/users');
+            }
+          });
+
+      },
+      error: function(error) {
+        res.send(500, 'Failed saving user');
+      }
+  });
+};
+
+exports.removeFromCandidates = function(req, res) {
+  userId = req.params.id;
+  var queryUser = new Parse.Query(Parse.User);
+  queryUser.equalTo('objectId',userId);
+  queryUser.first({
+      success: function(result) { // Role Object
+          var user = result;
+          Parse.Cloud.useMasterKey();
+          user.save({"candidate":false}, {
+            success: function(object) {
+              res.redirect('/users');
+            },
+            error: function(object, error) {
+              // saving the object failed.
+            }
+          });
       },
       error: function(error) {
         res.send(500, 'Failed saving user');

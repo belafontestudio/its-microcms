@@ -12,7 +12,7 @@ block main
 	table.mdl-cell.mdl-cell--8-col.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
 		thead
 			tr
-				th.mdl-data-table__cell--non-numeric Admin
+				th.mdl-data-table__cell--non-numeric Candidato
 				th.mdl-data-table__cell--non-numeric Data Creazione
 				th.mdl-data-table__cell--non-numeric Email / Modifica
 				th.mdl-data-table__cell--non-numeric Nome
@@ -21,21 +21,23 @@ block main
 				th.mdl-data-table__cell--non-numeric Corsi
 				th.mdl-data-table__cell--non-numeric Codice Fiscale
 				th.mdl-data-table__cell--non-numeric Contatto
+				th.mdl-data-table__cell--non-numeric Admin
 		tbody
 			- each user in users
 				- var isAdmin = user.get('admin')
+				- var isCandidate = user.get('candidate')
 				- var name = user.getUsername()
 				- var username = currentUser.getUsername()
 				
 				tr
 					td.mdl-data-table__cell--non-numeric
 						if username != name
-							if isAdmin
-								form#adminButton(class='link_button_form', method='post', action='/users/#{user.id}/removefromadmins')
+							if isCandidate
+								form#adminButton(class='link_button_form', method='post', action='/users/#{user.id}/removefromcandidates')
 									input(type='hidden', name='_method', value='put')
 									input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='vero')
 							else
-								form#adminButton(class='link_button_form', method='post', action='/users/#{user.id}/addtoadmins')
+								form#adminButton(class='link_button_form', method='post', action='/users/#{user.id}/addtocandidates')
 									input(type='hidden', name='_method', value='put')
 									input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='falso')
 					td.mdl-data-table__cell--non-numeric #{formatTime(user.createdAt)}
@@ -52,7 +54,16 @@ block main
 						form(class='link_button_form', method='post', action='/users/#{user.id}')
 							input(type='hidden', name='_method', value='DELETE')
 							input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Elimina')
-						
+					td.mdl-data-table__cell--non-numeric
+						if username != name
+							if isAdmin
+								form#adminButton(class='link_button_form', method='post', action='/users/#{user.id}/removefromadmins')
+									input(type='hidden', name='_method', value='put')
+									input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='vero')
+							else
+								form#adminButton(class='link_button_form', method='post', action='/users/#{user.id}/addtoadmins')
+									input(type='hidden', name='_method', value='put')
+									input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='falso')	
 
 	a#fab(href="/users/new")
 		button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored

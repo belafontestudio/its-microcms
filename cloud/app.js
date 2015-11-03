@@ -130,6 +130,8 @@ app.get('/', isAuthenticated, dashboardController.index);
 app.get('/users', isAuthenticated, usersController.index);
 app.put('/users/:id/addtoadmins', isAuthenticated, usersController.addToAdmins);
 app.put('/users/:id/removefromadmins', isAuthenticated, usersController.removeFromAdmins);
+app.put('/users/:id/addtocandidates', isAuthenticated, usersController.addToCandidates);
+app.put('/users/:id/removefromcandidates', isAuthenticated, usersController.removeFromCandidates);
 app.get('/users/:id/edit', isAuthenticated, usersController.edit);
 app.del('/users/:id', isAuthenticated, usersController.delete);
 app.post('/users', isAuthenticated, usersController.create);
