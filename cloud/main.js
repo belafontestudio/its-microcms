@@ -1,7 +1,7 @@
 require('cloud/app.js');
 
 
-var mailchimpApiKey = "bc584ab440c9b997b779eac112b4d25c-us8";
+var mailchimpApiKey = "b38bbe7f505ad8ac5b927ceccc7fdfe9-us8";
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
 
@@ -22,8 +22,6 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
 						"CONTACT": user.contact
 		    }
 			}
-
-
       var url = "https://us8.api.mailchimp.com/3.0/lists/c837717243/members/";
 
       Parse.Cloud.httpRequest({

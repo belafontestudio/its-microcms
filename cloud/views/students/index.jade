@@ -1,0 +1,53 @@
+extends ../layouts/_html5bp
+
+block menu
+	include ../partials/_menu
+block drawer
+	include ../partials/_drawer
+	
+block main
+	p.tutorial
+		| Per creare un nuovo studente, utilizza il tasto in basso a destra.
+
+	table.mdl-cell.mdl-cell--8-col.mdl-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+		thead
+			tr
+				th.mdl-data-table__cell--non-numeric Foto
+				th.mdl-data-table__cell--non-numeric Nome
+				th.mdl-data-table__cell--non-numeric Cognome
+				th.mdl-data-table__cell--non-numeric Corso
+				th.mdl-data-table__cell--non-numeric Bio
+				th.mdl-data-table__cell--non-numeric Skills
+				th.mdl-data-table__cell--non-numeric Anno
+				th.mdl-data-table__cell--non-numeric Data Creazione
+				
+
+		tbody
+			- each student in students
+				tr
+					td.mdl-data-table__cell--non-numeric.truncate
+						- if(student.get('portrait'))
+							img(src="#{student.get('portrait').url()}")
+						- else
+							img(src="images/user_placeholder.jpg")
+					td.mdl-data-table__cell--non-numeric.truncate
+						a(href="/students/#{student.id}/edit") #{student.get("name")}
+					td.mdl-data-table__cell--non-numeric.truncate
+						a(href="/students/#{student.id}/edit") #{student.get("surname")}
+					td.mdl-data-table__cell--non-numeric.truncate= student.get("course")
+					td.mdl-data-table__cell--non-numeric.truncate= student.get("bio")
+					td.mdl-data-table__cell--non-numeric.truncate= student.get("skills")
+					td.mdl-data-table__cell--non-numeric.truncate= student.get("year").get("year")
+					td.mdl-data-table__cell--non-numeric #{formatTime(student.createdAt)}
+
+					td.mdl-data-table__cell--non-numeric 
+						form(class='link_button_form', method='post', action='/students/#{student.id}')
+							input(type='hidden', name='_method', value='DELETE')
+							input.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(class='link_button', type='submit', value='Elimina')
+			
+
+	a#fab(href="/students/new")
+		button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+			i.material-icons add
+
+	

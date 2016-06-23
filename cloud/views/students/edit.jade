@@ -1,0 +1,57 @@
+extends ../layouts/_html5bp
+
+block menu
+  include ../partials/_menu
+block drawer
+  include ../partials/_drawer
+  
+
+
+block main
+  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
+    .mdl-cell.mdl-cell--12-col
+      i.mdl-color-text--blue-grey-400.material-icons insert_invitation
+      form(method='post', action='/students/#{student.id}')
+        p Creato il #{formatTime(student.createdAt)}
+        - if(student.get('portrait'))
+          img(src="#{student.get('portrait').url()}")
+        - else
+          img(src="images/user_placeholder.jpg")
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          
+          input#title.mdl-textfield__input(name='portrait', type="file").
+          label.mdl-textfield__label(for="portrait") Foto
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='name', type="text", value="#{student.get('name')}").
+          label.mdl-textfield__label(for="name") Nome
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='surname', type="text", value="#{student.get('surname')}").
+          label.mdl-textfield__label(for="surname") Cognome
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          - each year in years
+            label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-#{year.get("year")}')
+              input.mdl-radio__button(id="radio-#{year.get('year')}",type='radio', name="years", value="#{year.get('year')}",checked)
+              span.mdl-radio__label= year.get('year')
+
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          textarea.mdl-textfield__input(name='bio',rows= "5", type='text')= student.get('bio')
+          label#descrizione.mdl-textfield__label(for="bio") Bio
+          
+        
+
+        
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          p Corsi
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-mobile')
+            input.mdl-radio__button(id="radio-mobile",type='radio', name="courses", value="Mobile App Design",checked=mobileapp)
+            span.mdl-radio__label Mobile App Design
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-video')
+            input.mdl-radio__button(id="radio-video",type='radio', name="courses", value="Videomaking",checked=videomaking)
+            span.mdl-radio__label Videomaking
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-coding')
+            input.mdl-radio__button(id="radio-coding",type='radio', name="courses", value="Coding",checked=coding)
+            span.mdl-radio__label Coding  
+
+        .button-righest 
+          button#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
+            | Salva

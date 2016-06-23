@@ -10,6 +10,7 @@ var announcementsController = require('cloud/controllers/announcements.js');
 var tendersController = require('cloud/controllers/tenders.js');
 var attachmentsController = require('cloud/controllers/attachments.js');
 var usersController = require('cloud/controllers/users.js');
+var studentsController = require('cloud/controllers/students.js');
 var candidatesController = require('cloud/controllers/candidates.js');
 var userAttachmentsController = require('cloud/controllers/user_attachments.js');
 
@@ -137,6 +138,13 @@ app.del('/users/:id', isAuthenticated, usersController.delete);
 app.post('/users', isAuthenticated, usersController.create);
 app.put('/users/:id', isAuthenticated, usersController.update);
 app.get('/users/new', isAuthenticated, usersController.new);
+
+app.get('/students', isAuthenticated, studentsController.index);
+app.del('/students/:id', isAuthenticated, studentsController.delete);
+app.get('/students/:id/edit', isAuthenticated, studentsController.edit);
+// app.post('/students', isAuthenticated, studentsController.create);
+// app.put('/students/:id', isAuthenticated, studentsController.update);
+app.get('/students/new', isAuthenticated, studentsController.new);
 
 app.get('/users/attachments/new', isAuthenticated, userAttachmentsController.new);
 app.del('/users/attachments/:id', isAuthenticated, userAttachmentsController.delete);

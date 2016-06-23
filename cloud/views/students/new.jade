@@ -1,0 +1,46 @@
+extends ../layouts/_html5bp
+
+block menu
+  include ../partials/_menu
+block drawer
+  include ../partials/_drawer
+  
+
+
+block main
+  .mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col.relative
+    .mdl-cell.mdl-cell--12-col
+      i.mdl-color-text--blue-grey-400.material-icons insert_invitation
+      form(method='post', action='/students')
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='name', type="text")
+          label.mdl-textfield__label(for="name") Nome
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='surname', type="text")
+          label.mdl-textfield__label(for="surname") Cognome
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          input#title.mdl-textfield__input(name='year', type="text")
+          label.mdl-textfield__label(for="year") Anno
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          p Corsi
+          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-1")
+            input#checkbox-1.mdl-checkbox__input(type="checkbox", name="courses", value="Mobile App Design")/
+            span#checkbox-1-label.mdl-checkbox__label Mobile App Design
+        
+          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-2")
+            input#checkbox-2.mdl-checkbox__input(type="checkbox", name="courses", value="Videomaking")/
+            span#checkbox-2-label.mdl-checkbox__label Videomaking
+          
+          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-3")
+            input#checkbox-2.mdl-checkbox__input(type="checkbox", name="courses", value="Coding")/
+            span#checkbox-2-label.mdl-checkbox__label Coding
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          textarea#body(name='body', type='text')
+          label#descrizione.mdl-textfield__label(for="body") Descrizione
+
+
+
+
+        .button-righest 
+          button#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
+            | Salva
