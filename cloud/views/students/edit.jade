@@ -16,11 +16,14 @@ block main
         - if(student.get('portrait'))
           img(src="#{student.get('portrait').url()}")
         - else
-          img(src="images/user_placeholder.jpg")
+          img(src="/images/user_placeholder.jpg")
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-          
-          input#title.mdl-textfield__input(name='portrait', type="file").
+          input#portrait.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(name="portrait",type='file').
           label.mdl-textfield__label(for="portrait") Foto
+          .button-righest
+            button#portraitfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva Portrait')
+              | Salva Portrait
+          input(id="studentid", type="hidden" , value="#{student.id}")
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           input#title.mdl-textfield__input(name='name', type="text", value="#{student.get('name')}").
           label.mdl-textfield__label(for="name") Nome
@@ -53,5 +56,7 @@ block main
             span.mdl-radio__label Coding  
 
         .button-righest 
-          button#submit.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
+          input(type='hidden', name='_method', value='put').
+          button#uploadfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
             | Salva
+          #loader.mdl-progress.mdl-js-progress.mdl-progress__indeterminate.mdl-cell--12-col

@@ -109,8 +109,7 @@ exports.update = function(req, res) {
     student.id = req.params.id;
   }
 
-
-studentData = req.body;
+  studentData = req.body;
   console.log(studentData);
   if(studentData.name != "undefined"){
     student.set("name", studentData.name);
@@ -118,20 +117,15 @@ studentData = req.body;
   if(studentData.surname != "undefined"){
     student.set("surname", studentData.surname);
   }
-  if(studentData.year != "undefined"){
-    student.set("year", studentData.year);
-  }
+  // if(studentData.years != "undefined"){
+  //   student.set("Year", studentData.years);
+  // }
   if(studentData.course != "undefined"){
     student.set("course", studentData.course);
   }
   if(studentData.bio != "undefined"){
     student.set("bio", studentData.bio);
   }
-  if(studentData.bio != "undefined"){
-    student.set("bio", studentData.bio);
-  }
-
-
 
 
   Parse.Cloud.useMasterKey();
@@ -156,7 +150,7 @@ exports.edit = function(req, res) {
       yearQuery.find().then(function(years) {
         Parse.User.current().fetch().then(function(current){
           var course = student.get("course");
-          var portrait = student.get("portrait").url();
+
           var mobileapp = false;
           var videomaking = false;
           var coding = false;
