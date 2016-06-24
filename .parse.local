@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "ITS": {
+      "applicationId": "2RD3MsL6Lf8FgGRkgNNehB0r5RvJRr0km7rZb9VS"
+    },
+    "_default": {
+      "link": "ITS"
+    }
+  }
+}

@@ -102,72 +102,47 @@ exports.new = function(req, res) {
 // };
 
 
-// exports.update = function(req, res) {
-//   var user = new User();
-//   res.locals.path = req.path;
-//   if(req.params.id){
-//     user.id = req.params.id;
-//   }
-//
-//
-//   userData = req.body;
-//
-//   if(userData.name != "undefined"){
-//     user.set("name", userData.name);
-//   }
-//   if(userData.surname != "undefined"){
-//     user.set("surname", userData.surname);
-//   }
-//   if(userData.password != "undefined"){
-//     user.set("password", userData.password);
-//   }
-//   if(userData.courses != "undefined"){
-//     user.set("courses", userData.courses);
-//   }
-//   if(userData.birthday != "undefined"){
-//     var dt   = parseInt(userData.birthday.substring(0,2));
-//     var mon  = parseInt(userData.birthday.substring(3,5));
-//     var yr   = parseInt(userData.birthday.substring(6,10));
-//     var date = new Date(yr, mon-1, dt);
-//     user.set("birthday", date);
-//   }
-//   if(userData.email != "undefined"){
-//     user.set("email", userData.email);
-//   }
-//   if(userData.email != "undefined"){
-//     user.set("username", userData.email);
-//   }
-//
-//   if(userData.admin != "undefined"){
-//     if(userData.admin == "on"){
-//       user.set("admin", true);
-//     }else{
-//       user.set("admin", false);
-//     }
-//
-//   }
-//   if(userData.candidate != "undefined"){
-//     if(userData.candidate == "on"){
-//       user.set("candidate", true);
-//     }else{
-//       user.set("candidate", false);
-//     }
-//
-//   }
-//   if(userData.contact != "undefined"){
-//     user.set("contact", userData.contact);
-//   }
-//
-//
-//   Parse.Cloud.useMasterKey();
-//   user.save().then(function() {
-//     res.redirect('/users');
-//   },
-//   function(err) {
-//     console.log(err);
-//     res.send(500, 'Failed saving user');
-//   });
-// };
+exports.update = function(req, res) {
+  var student = new Student();
+  res.locals.path = req.path;
+  if(req.params.id){
+    student.id = req.params.id;
+  }
+
+
+studentData = req.body;
+  console.log(studentData);
+  if(studentData.name != "undefined"){
+    student.set("name", studentData.name);
+  }
+  if(studentData.surname != "undefined"){
+    student.set("surname", studentData.surname);
+  }
+  if(studentData.year != "undefined"){
+    student.set("year", studentData.year);
+  }
+  if(studentData.course != "undefined"){
+    student.set("course", studentData.course);
+  }
+  if(studentData.bio != "undefined"){
+    student.set("bio", studentData.bio);
+  }
+  if(studentData.bio != "undefined"){
+    student.set("bio", studentData.bio);
+  }
+
+
+
+
+  Parse.Cloud.useMasterKey();
+  student.save().then(function() {
+    res.redirect('/students');
+  },
+  function(err) {
+    console.log(err);
+    res.send(500, 'Failed saving student');
+  });
+};
 
 exports.edit = function(req, res) {
   var query = new Parse.Query(Student);
