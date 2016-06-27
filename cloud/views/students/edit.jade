@@ -40,20 +40,25 @@ block main
           textarea.mdl-textfield__input(name='bio',rows= "5", type='text')= student.get('bio')
           label#descrizione.mdl-textfield__label(for="bio") Bio
           
-        
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+          p Skills
+          - each skill,index in skills
+            - var selectedSkill = student.get("course") == skill.get('name') ? true : false
+            label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-#{index}")
+              input(id="checkbox-#{index}").mdl-checkbox__input(type="checkbox", name="skills", value="#{skill.get('name')}")/
+              span.mdl-checkbox__label(id="checkbox-#{index}-label")= skill.get("name")
+          
 
-        
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           p Corsi
-          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-mobile')
-            input.mdl-radio__button(id="radio-mobile",type='radio', name="course", value="Mobile App Design",checked=mobileapp)
-            span.mdl-radio__label Mobile App Design
-          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-video')
-            input.mdl-radio__button(id="radio-video",type='radio', name="course", value="Videomaking",checked=videomaking)
-            span.mdl-radio__label Videomaking
-          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-coding')
-            input.mdl-radio__button(id="radio-coding",type='radio', name="course", value="Coding",checked=coding)
-            span.mdl-radio__label Coding  
+          - each course,index in courses
+            - var selectedCourse = student.get("course") == course.get('name') ? true : false
+              
+                
+            label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-#{index}')
+              input.mdl-radio__button(id="radio-#{index}",type='radio', name="course", value="#{course.get('name')}", checked=#{selectedCourse})
+              span.mdl-radio__label= course.get('name')
+  
 
         .button-righest 
           input(type='hidden', name='_method', value='put').

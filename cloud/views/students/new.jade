@@ -12,31 +12,40 @@ block main
     .mdl-cell.mdl-cell--12-col
       i.mdl-color-text--blue-grey-400.material-icons insert_invitation
       form(method='post', action='/students')
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-          input#title.mdl-textfield__input(name='name', type="text")
-          label.mdl-textfield__label(for="name") Nome
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-          input#title.mdl-textfield__input(name='surname', type="text")
-          label.mdl-textfield__label(for="surname") Cognome
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-          input#title.mdl-textfield__input(name='year', type="text")
-          label.mdl-textfield__label(for="year") Anno
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-          p Corsi
-          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-1")
-            input#checkbox-1.mdl-checkbox__input(type="checkbox", name="courses", value="Mobile App Design")/
-            span#checkbox-1-label.mdl-checkbox__label Mobile App Design
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+        input#title.mdl-textfield__input(name='name', type="text", value="#{student.get('name')}").
+        label.mdl-textfield__label(for="name") Nome
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+        input#title.mdl-textfield__input(name='surname', type="text", value="#{student.get('surname')}").
+        label.mdl-textfield__label(for="surname") Cognome
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+        - each year in years
+          label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-#{year.get("year")}')
+            input.mdl-radio__button(id="radio-#{year.get('year')}",type='radio', name="years", value="#{year.get('year')}",checked)
+            span.mdl-radio__label= year.get('year')
+
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+        textarea.mdl-textfield__input(name='bio',rows= "5", type='text')= student.get('bio')
+        label#descrizione.mdl-textfield__label(for="bio") Bio
         
-          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-2")
-            input#checkbox-2.mdl-checkbox__input(type="checkbox", name="courses", value="Videomaking")/
-            span#checkbox-2-label.mdl-checkbox__label Videomaking
-          
-          label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-3")
-            input#checkbox-2.mdl-checkbox__input(type="checkbox", name="courses", value="Coding")/
-            span#checkbox-2-label.mdl-checkbox__label Coding
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
-          textarea#body(name='body', type='text')
-          label#descrizione.mdl-textfield__label(for="body") Descrizione
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+        p Corsi
+        label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-mobile')
+          input.mdl-radio__button(id="radio-mobile",type='radio', name="course", value="Mobile App Design",checked=mobileapp)
+          span.mdl-radio__label Mobile App Design
+        label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-video')
+          input.mdl-radio__button(id="radio-video",type='radio', name="course", value="Videomaking",checked=videomaking)
+          span.mdl-radio__label Videomaking
+        label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-coding')
+          input.mdl-radio__button(id="radio-coding",type='radio', name="course", value="Coding",checked=coding)
+          span.mdl-radio__label Coding  
+
+      .button-righest 
+        input(type='hidden', name='_method', value='put').
+        button#uploadfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
+          | Salva
+        #loader.mdl-progress.mdl-js-progress.mdl-progress__indeterminate.mdl-cell--12-col
+
 
 
 

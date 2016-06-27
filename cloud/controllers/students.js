@@ -146,43 +146,44 @@ exports.edit = function(req, res) {
     if (student) {
       var Years = Parse.Object.extend('Year');
       var yearQuery = new Parse.Query(Years);
-      yearQuery.descending('createdAt');
-      yearQuery.find().then(function(years) {
-        Parse.User.current().fetch().then(function(current){
-          var course = student.get("course");
+      yearQuery.find().then(function(years){
+        var Courses = Parse.Object.extend('Course');
+        var courseQuery = new Parse.Query(Courses);
+        courseQuery.find().then(function(courses){
+          var Skills = Parse.Object.extend('Skill');
+          var skillQuery = new Parse.Query(Skills);
+          skillQuery.find().then(function(skills) {
+            Parse.User.current().fetch().then(function(current){
+              var course = student.get("course");
 
-          var mobileapp = false;
-          var videomaking = false;
-          var coding = false;
-          switch(course){
-            case "Mobile App Design":
-              mobileapp= true;
-            break;
-            case 'Videomaking':
-              videomaking= true;
-            break;
-            case 'Coding':
-              coding= true;
-            break;
-
-          }
-
-          var skills = student.get("skills");
+              var mobileapp = false;
+              var videomaking = false;
+              var coding = false;
 
 
-        res.render('students/edit', {
-          years:years,
-          student: student,
-          mobileapp: mobileapp,
-          videomaking: videomaking,
-          coding: coding,
-          skills: skills,
-          currentUser: current,
+
+              var studentSkills = student.get("skills");
+              var newSkills= [];
+              for (var i in skills) {
+                newSkills.push(skills[i].get("name"))
+              }
+              console.log(_.intersection(skills,newSkills))
+
+
+              res.render('students/edit', {
+                years:years,
+                student: student,
+                courses: courses,
+                mobileapp: mobileapp,
+                videomaking: videomaking,
+                coding: coding,
+                skills: skills,
+                currentUser: current,
+              });
+          });
         });
       });
-
-      });
-
+    });
     } else {
       res.send('specified student does not exist');
     }
