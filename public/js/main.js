@@ -5,9 +5,10 @@ var uploadable = false;
 var file;
 var loader = $("#loader");
 var uploadInput = $('#uploadfile');
-
+var userPortraitInput = $('#portraitfile');
 var userUploadable = false;
 var userFile;
+var portraitFile;
 var loader = $("#loader");
 var userUploadInput = $('#useruploadfile');
 
@@ -105,6 +106,7 @@ function userUploadFile(){
 	});
 }
 
+
 function fileUploader(){
 	console.log("fileupload");
 
@@ -134,7 +136,7 @@ function fileUploader(){
   // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
 	uploadInput.click(function(e) {
 		e.preventDefault();
-		console.log(file)
+
 		if (uploadable && typeof file != 'undefined'){
 
 			console.log("uploadfile");
@@ -185,6 +187,61 @@ function userFileUploader(){
 		}
   });
 }
+function portraitUploadFile(){
+
+
+
+	  var file = portrait;
+	  var name = portrait.name;
+
+	  var portraitFile = new Parse.File(name, file);
+		portraitFile.save().then(function() {
+			var studentid = $('#studentid').val();
+			var query = new Parse.Query("Student");
+				query.select("id", studentid);
+				query.get(studentid).then(function(student) {
+					console.log(student);
+					student.set("portrait", portraitFile);
+					student.save().then(function() {
+				    location.reload();
+				  },
+				  function(err) {
+				    console.log(err);
+
+				  });
+				});
+		}, function(error) {
+			console.log(error)
+		});
+
+}
+function portraitUploader(){
+	console.log("portraitupload");
+  // Set an event listener on the Choose File field.
+  $('#portrait').bind("change", function(e) {
+
+    var files = e.target.files || e.dataTransfer.files;
+    // Our file var now holds the selected file
+    portrait = files[0];
+		if ( typeof portrait != 'undefined'){
+			uploadInput.removeAttr('disabled');
+		}
+  });
+  // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
+	userPortraitInput.click(function(e) {
+		e.preventDefault();
+
+		if ( typeof portrait != 'undefined'){
+
+			console.log("upload portrait");
+			loader.fadeIn();
+
+
+	    portraitUploadFile();
+		}
+  });
+}
+
 
 function userButton(){
 
@@ -226,6 +283,8 @@ $(document).ready(function(){
   });
 
 	//userButton();
+	
+	portraitUploader();
   fileUploader();
 	userFileUploader();
 

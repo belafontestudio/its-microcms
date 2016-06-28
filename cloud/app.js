@@ -134,17 +134,18 @@ app.put('/users/:id/removefromadmins', isAuthenticated, usersController.removeFr
 app.put('/users/:id/addtocandidates', isAuthenticated, usersController.addToCandidates);
 app.put('/users/:id/removefromcandidates', isAuthenticated, usersController.removeFromCandidates);
 app.get('/users/:id/edit', isAuthenticated, usersController.edit);
-app.del('/users/:id', isAuthenticated, usersController.delete);
 app.post('/users', isAuthenticated, usersController.create);
 app.put('/users/:id', isAuthenticated, usersController.update);
 app.get('/users/new', isAuthenticated, usersController.new);
+app.del('/users/:id', isAuthenticated, usersController.delete);
 
 app.get('/students', isAuthenticated, studentsController.index);
-app.del('/students/:id', isAuthenticated, studentsController.delete);
+
 app.get('/students/:id/edit', isAuthenticated, studentsController.edit);
-// app.post('/students', isAuthenticated, studentsController.create);
-// app.put('/students/:id', isAuthenticated, studentsController.update);
+app.post('/students', isAuthenticated, studentsController.create);
+app.put('/students/:id', isAuthenticated, studentsController.update);
 app.get('/students/new', isAuthenticated, studentsController.new);
+app.del('/students/:id', isAuthenticated, studentsController.delete);
 
 app.get('/users/attachments/new', isAuthenticated, userAttachmentsController.new);
 app.del('/users/attachments/:id', isAuthenticated, userAttachmentsController.delete);
