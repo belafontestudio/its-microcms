@@ -136,7 +136,7 @@ function fileUploader(){
   // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
 	uploadInput.click(function(e) {
 		e.preventDefault();
-
+		console.log(file)
 		if (uploadable && typeof file != 'undefined'){
 
 			console.log("uploadfile");
@@ -283,7 +283,6 @@ $(document).ready(function(){
   });
 
 	//userButton();
-	
 	portraitUploader();
   fileUploader();
 	userFileUploader();
