@@ -342,3 +342,28 @@ _:-ms-input-placeholder, :root .demo-graph {
   position: relative;
   top: -6px;
 }
+
+.mdl-data-table td{
+  padding-bottom: 12px;
+}
+
+.red-btn{
+  color: red !important;
+}
+
+#profile-pic{
+  margin-bottom: 40px;
+}
+
+.button-rightest{
+    width: 90%;
+    text-align: right;
+}
+
+.margin-top-40px{
+  margin-top: 40px;
+}
+
+.mdl-radio.is-upgraded{
+  margin-right: 30px;
+}

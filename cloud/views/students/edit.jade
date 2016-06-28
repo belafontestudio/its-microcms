@@ -14,17 +14,17 @@ block main
       form(method='post', action='/students/#{student.id}')
         p Creato il #{formatTime(student.createdAt)}
         - if(student.get('portrait'))
-          img(src="#{student.get('portrait').url()}")
+          img#profile-pic(src="#{student.get('portrait').url()}")
         - else
-          img(src="/images/user_placeholder.jpg")
+          img#profile-pic(src="/images/user_placeholder.jpg")
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           input#portrait.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(name="portrait",type='file').
           label.mdl-textfield__label(for="portrait") Foto
-          .button-righest
+          .button-rightest
             button#portraitfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva Portrait')
               | Carica Immagine
           input(id="studentid", type="hidden" , value="#{student.id}")
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col.margin-top-40px
           input#title.mdl-textfield__input(name='name', type="text", value="#{student.get('name')}").
           label.mdl-textfield__label(for="name") Nome
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
