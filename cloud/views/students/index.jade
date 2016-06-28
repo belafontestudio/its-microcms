@@ -37,7 +37,10 @@ block main
 					td.mdl-data-table__cell--non-numeric.truncate= student.get("course")
 					td.mdl-data-table__cell--non-numeric.truncate= student.get("bio")
 					td.mdl-data-table__cell--non-numeric.truncate= student.get("skills")
-					td.mdl-data-table__cell--non-numeric.truncate= student.get("year").get("year")
+					if student.get("year")
+						td.mdl-data-table__cell--non-numeric.truncate= student.get("year").get("year")
+					else
+						td.mdl-data-table__cell--non-numeric.truncate
 					td.mdl-data-table__cell--non-numeric #{formatTime(student.createdAt)}
 
 					td.mdl-data-table__cell--non-numeric 

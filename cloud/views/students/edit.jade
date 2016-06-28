@@ -22,7 +22,7 @@ block main
           label.mdl-textfield__label(for="portrait") Foto
           .button-righest
             button#portraitfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva Portrait')
-              | Salva Portrait
+              | Carica Immagine
           input(id="studentid", type="hidden" , value="#{student.id}")
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           input#title.mdl-textfield__input(name='name', type="text", value="#{student.get('name')}").
@@ -43,11 +43,12 @@ block main
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           p Skills
           - each skill,index in skills
-            - var selectedSkill = student.get("course") == skill.get('name') ? true : false
             label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="checkbox-#{index}")
-              input(id="checkbox-#{index}").mdl-checkbox__input(type="checkbox", name="skills", value="#{skill.get('name')}")/
-              span.mdl-checkbox__label(id="checkbox-#{index}-label")= skill.get("name")
-          
+              if skill.checked == true
+                input(id="checkbox-#{index}").mdl-checkbox__input(type="checkbox", name="skills", value="#{skill.name}", checked)/
+              else
+                input(id="checkbox-#{index}").mdl-checkbox__input(type="checkbox", name="skills", value="#{skill.name}")/
+              span.mdl-checkbox__label(id="checkbox-#{index}-label")= skill.name
 
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           p Corsi
@@ -62,6 +63,6 @@ block main
 
         .button-righest 
           input(type='hidden', name='_method', value='put').
-          button#uploadfile.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
+          button.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect(type='submit', value='Salva')
             | Salva
           #loader.mdl-progress.mdl-js-progress.mdl-progress__indeterminate.mdl-cell--12-col

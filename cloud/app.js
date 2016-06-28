@@ -142,7 +142,7 @@ app.del('/users/:id', isAuthenticated, usersController.delete);
 app.get('/students', isAuthenticated, studentsController.index);
 
 app.get('/students/:id/edit', isAuthenticated, studentsController.edit);
-// app.post('/students', isAuthenticated, studentsController.create);
+app.post('/students', isAuthenticated, studentsController.create);
 app.put('/students/:id', isAuthenticated, studentsController.update);
 app.get('/students/new', isAuthenticated, studentsController.new);
 app.del('/students/:id', isAuthenticated, studentsController.delete);
