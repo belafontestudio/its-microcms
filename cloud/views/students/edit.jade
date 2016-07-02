@@ -32,8 +32,12 @@ block main
           label.mdl-textfield__label(for="surname") Cognome
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           - each year in years
+            - var selectedYear = student.get("year") == year.get('year') ? true : false
             label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-#{year.get("year")}')
-              input.mdl-radio__button(id="radio-#{year.get('year')}",type='radio', name="years", value="#{year.get('year')}",checked)
+              if selectedYear == true
+                input.mdl-radio__button(id="radio-#{year.get('year')}",type='radio', name="years", value="#{year.get('year')}", checked)
+              else
+                input.mdl-radio__button(id="radio-#{year.get('year')}",type='radio', name="years", value="#{year.get('year')}")
               span.mdl-radio__label= year.get('year')
 
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
@@ -53,11 +57,13 @@ block main
         .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--12-col
           p Corsi
           - each course,index in courses
-            - var selectedCourse = student.get("course") == course.get('name') ? true : false
-              
-                
+            - var selectedCourse = student.get("course") == course.get('name') ? true : false  
             label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='radio-#{index}')
-              input.mdl-radio__button(id="radio-#{index}",type='radio', name="course", value="#{course.get('name')}", checked=#{selectedCourse})
+              if selectedCourse == true
+                input.mdl-radio__button(id="radio-#{index}",type='radio', name="course", value="#{course.get('name')}", checked)
+              else
+                input.mdl-radio__button(id="radio-#{index}",type='radio', name="course", value="#{course.get('name')}")
+              
               span.mdl-radio__label= course.get('name')
   
 

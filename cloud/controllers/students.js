@@ -8,7 +8,7 @@ exports.index = function(req, res) {
   res.locals.path = req.path;
   var query = new Parse.Query(Student);
   query.descending('createdAt');
-  query.include('year');
+
 
   query.find().then(function(results) {
     Parse.User.current().fetch().then(function(user){
@@ -38,7 +38,7 @@ exports.new = function(req, res) {
         var skillQuery = new Parse.Query(Skills);
         skillQuery.include("course");
         skillQuery.find().then(function(skills) {
-        
+
           res.render('students/new', {
             courses: courses,
             years:years,
@@ -64,9 +64,9 @@ exports.create = function(req, res) {
   if(studentData.surname != "undefined"){
     student.set("surname", studentData.surname);
   }
-  // if(studentData.years != "undefined"){
-  //   student.set("Year", studentData.years);
-  // }
+  if(studentData.years != "undefined"){
+    student.set("year", studentData.years);
+  }
   if(studentData.course != "undefined"){
     student.set("course", studentData.course);
   }
@@ -111,9 +111,9 @@ exports.update = function(req, res) {
   if(studentData.surname != "undefined"){
     student.set("surname", studentData.surname);
   }
-  // if(studentData.years != "undefined"){
-  //   student.set("Year", studentData.years);
-  // }
+  if(studentData.years != "undefined"){
+    student.set("year", studentData.years);
+  }
   if(studentData.course != "undefined"){
     student.set("course", studentData.course);
   }
@@ -145,7 +145,6 @@ exports.update = function(req, res) {
 exports.edit = function(req, res) {
   var query = new Parse.Query(Student);
   res.locals.path = req.path;
-  query.include("year");
   query.get(req.params.id).then(function(student) {
     if (student) {
       var Years = Parse.Object.extend('Year');
